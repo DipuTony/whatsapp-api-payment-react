@@ -5,6 +5,7 @@ function WpSend() {
     const [number, setNumber] = useState()
     const [type, setType] = useState()
     const [parameter, setParameter] = useState()
+    const [orderId, setOrderId] = useState()
 
     // const header = {
     //     headers: {
@@ -35,24 +36,34 @@ function WpSend() {
         };
         const bodyParameterDynamic = {
 
-            "messaging_product": "whatsapp",
-            "to": mobileNo,
-            "type": type,
+            messaging_product: "whatsapp",
+            to: mobileNo,
+            "type": "template",
             "template": {
-                "name": "random name",
+                "name": type,
                 "language": {
-                    "code": "en_Us"
+                    "code": "en_US",
+                    "policy": "deterministic"
                 },
-                "parameters": [{
-                    "type": "text",
-                    "text": "name"
-                },
-                {
-                "type": "TEMPLATE",
-                "TEMPLATE": "Hi there"
-                }]
-          
+                "components": [
+                    {
+                        "type": "body",
+                        "parameters": [
+                            {
+                                "type": "text",
+                                "text": parameter
+                            },
+                            {
+                                "type": "text",
+                                "text": orderId
+                            }
+                        ]
+                    },
+                    
+                    
+                ]
             }
+
 
         };
 
@@ -76,12 +87,17 @@ function WpSend() {
                         <option value="">Select</option>
                         <option value="hello_world">Hello World</option>
                         <option value="trans_first">Trans First</option>
+                        <option value="trn_2_var">trn_2_var</option>
                         <option value="trans_with_var">trans_with_var</option>
                     </select>
                 </div>
                 <div className='my-2'>
-                    <p>Parameters</p>
+                    <p>Name</p>
                     <input onChange={(e) => setParameter(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
+                </div>
+                <div className='my-2'>
+                    <p>Oder ID</p>
+                    <input onChange={(e) => setOrderId(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
                 </div>
                 <div className='my-3 flex justify-center'>
                     <button onClick={handleSave} className='px-4 py-1 bg-green-500'>Send</button>
