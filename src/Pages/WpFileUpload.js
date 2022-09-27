@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-function WpSend() {
+function WpFileUpload() {
     const [number, setNumber] = useState()
     const [type, setType] = useState()
     const [parameter, setParameter] = useState()
@@ -15,21 +15,44 @@ function WpSend() {
             headers: { Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}` }
         };
 
-        const bodyParameterSimple = {  // This is for send message directly without variables
+
+        
+        const bodyParameterDynamic = {  // This is for pass two variable in body
+
             messaging_product: "whatsapp",
             to: mobileNo,
-            type: "template",
-            template: {
-                name: type,
-                language: {
-                    "code": "en_US"
-                }
+            "type": "template",
+            "template": {
+                "name": type,
+                "language": {
+                    "code": "en_US",
+                    "policy": "deterministic"
+                },
+                "components": [
+                    {
+                        "type": "body",
+                        "parameters": [
+                            {
+                                "type": "text",
+                                "text": parameter
+                            },
+                            {
+                                "type": "text",
+                                "text": orderId
+                            }
+                        ]
+                    },
+                    
+                    
+                ]
             }
+
+
         };
 
         axios.post(
             `https://graph.facebook.com/v14.0/${process.env.REACT_APP_PHONE_NUMBER_ID}/messages`,
-            bodyParameterSimple,
+            bodyParameterDynamic,
             config
         ).then(console.log).catch(console.log);
     }
@@ -37,7 +60,7 @@ function WpSend() {
     return (
         <>
             <div className='border p-10 shadow-2xl leading-7'>
-                <p className='text-center text-2xl font-semibold'>Simple Static</p>
+            <p className='text-center text-2xl font-semibold'>File Upload</p>
                 <div className='my-2'>
                     <p>WhatsApp Number</p>
                     <input onChange={(e) => setNumber(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
@@ -46,18 +69,18 @@ function WpSend() {
                     <p>Type</p>
                     <select onChange={(e) => setType(e.target.value)} type="" className='px-3 border border-gray-400 w-60 h-8' >
                         <option value="">Select</option>
-                        <option value="hello_world">Hello World</option>
-                        <option value="trans_first">Trans First</option>
+                        <option value="trn_2_var">trn_2_var</option>
+                        <option value="trans_3_var">trans_3_var</option>
                     </select>
                 </div>
-                {/* <div className='my-2'>
+                <div className='my-2'>
                     <p>Name</p>
                     <input onChange={(e) => setParameter(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
                 </div>
                 <div className='my-2'>
                     <p>Oder ID</p>
                     <input onChange={(e) => setOrderId(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
-                </div> */}
+                </div>
                 <div className='my-3 flex justify-center'>
                     <button onClick={handleSave} className='px-4 py-1 bg-green-500'>Send</button>
                 </div>
@@ -66,4 +89,4 @@ function WpSend() {
     )
 }
 
-export default WpSend
+export default WpFileUpload
