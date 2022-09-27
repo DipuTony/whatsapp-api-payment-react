@@ -16,14 +16,14 @@ function DynamicVar() {
         };
 
 
-        
+
         const bodyParameterDynamic = {  // This is for pass two variable in body
 
             messaging_product: "whatsapp",
             to: mobileNo,
             "type": "template",
             "template": {
-                "name": type,
+                "name": "trn_2_var",
                 "language": {
                     "code": "en_US",
                     "policy": "deterministic"
@@ -42,8 +42,8 @@ function DynamicVar() {
                             }
                         ]
                     },
-                    
-                    
+
+
                 ]
             }
 
@@ -60,18 +60,10 @@ function DynamicVar() {
     return (
         <>
             <div className='border p-10 shadow-2xl leading-7'>
-            <p className='text-center text-2xl font-semibold'>Dynamic Variale</p>
+                <p className='text-center text-2xl font-semibold'>Dynamic Variale</p>
                 <div className='my-2'>
                     <p>WhatsApp Number</p>
                     <input onChange={(e) => setNumber(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
-                </div>
-                <div className='my-2'>
-                    <p>Type</p>
-                    <select onChange={(e) => setType(e.target.value)} type="" className='px-3 border border-gray-400 w-60 h-8' >
-                        <option value="">Select</option>
-                        <option value="trn_2_var">trn_2_var</option>
-                        <option value="trans_3_var">trans_3_var</option>
-                    </select>
                 </div>
                 <div className='my-2'>
                     <p>Name</p>
