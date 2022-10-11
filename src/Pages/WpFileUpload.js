@@ -10,56 +10,39 @@ function WpFileUpload() {
     const handleSave = () => {
         console.log(process.env.REACT_APP_ACCESS_TOKEN)
         // console.log("Values", number, type, parameter)
-        const mobileNo = +91 + number;
+        const mobileNo = '91'+number;
+        console.log(mobileNo)
         const config = {
-            headers: { Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}` }
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+                contentType: "application/json"
+            }
         };
 
 
 
         const bodyParameterDynamic = {  // This is for pass two variable in body
-
+//916201675668
+//918404801234
+            to: "918404801234",
             messaging_product: "whatsapp",
-            to: mobileNo,
-            "type": "template",
-            "template": {
-                "name": type,
-                "language": {
-                    "code": "en_US",
-                    "policy": "deterministic"
-                },
-                "components": [
-                    {
-                        "type": "header",
-                        "parameters": [
-                            {
-                                "type": "image",
-                                "image": {
-                                    // "format": "image",
-                                    "link": url,
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "type": "body",
-                        "parameters": [
-                            {
-                                "type": "text",
-                                "text": parameter
-                            }
-                        ]
-                    },
+            recipient_type: "individual",
 
+            type: "document",
+            document: {
+                link: "http://www.xmlpdf.com/manualfiles/hello-world.pdf",
+                filename: "Hello World.pdf",                               
+            },
 
-                ]
+            type: "image",
+            image: {
+                link: "https://i.ibb.co/MgCJvrQ/2011-i507-001-oil-industry-set-flat-08.jpg",               
             }
-
-
+            
         };
 
         axios.post(
-            `https://graph.facebook.com/v14.0/${process.env.REACT_APP_PHONE_NUMBER_ID}/messages`,
+            `https://graph.facebook.com/v15.0/${process.env.REACT_APP_PHONE_NUMBER_ID}/messages`,
             bodyParameterDynamic,
             config
         ).then(console.log).catch(console.log);
