@@ -67,3 +67,8 @@ function WpSend() {
 }
 
 export default WpSend
+
+/*
+Exported To -
+1. WhatsAppIndex.js
+*/

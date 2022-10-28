@@ -8,6 +8,7 @@ function Header() {
                 <div className='mt-2'>
                     <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/"> WhatsApp Interation</Link>
                     <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/payment"> Payment Interation</Link>
+                    <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/admin"> Admin View</Link>
                 </div>
 
             </div>

@@ -69,7 +69,7 @@ function DynamicWithURL() {
     return (
         <>
             <div className='border p-10 shadow-2xl leading-7'>
-                <p className='text-center text-2xl font-semibold'>Dynamic Variale and URl Endpoint</p>
+                <p className='text-center text-2xl font-semibold'>Dynamic Variale <br /> and URl Endpoint</p>
                 <div className='my-2'>
                     <p>WhatsApp Number</p>
                     <input onChange={(e) => setNumber(e.target.value)} type="text" className='px-3 border border-gray-400 w-60 h-8' />
