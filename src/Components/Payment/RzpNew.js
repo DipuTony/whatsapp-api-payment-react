@@ -31,7 +31,7 @@ function RzpNew({ data }) {
 
     const handleSend = (payment_Id) => {
 
-        axios.post('http://203.129.217.245:80/api/pdfview', { "name": payment_Id, "phone": amount })
+        axios.post('http://192.168.0.240:82/api/pdfview', { "name": payment_Id, "phone": amount })
             .then((res) => {
                 console.log("PDF Generated", res)
                 handleSave(res.data.data)
@@ -118,7 +118,7 @@ function RzpNew({ data }) {
 
 
         setLoader(true)
-        axios.post('http://192.168.0.240:80/api/razorpay-payment', { "amount": amount })
+        axios.post('http://192.168.0.240:82/api/razorpay-payment', { "amount": amount })
             .then((res) => {
                 console.log("Order Id Response ", res)
                 if (res.data.status === true) {
