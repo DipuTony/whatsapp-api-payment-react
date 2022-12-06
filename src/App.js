@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link, Outlet, } from "react-rou
 import WhatsAppIndex from './Pages/WhatsAppIndex';
 import Header from './Components/Header';
 import AdminIndex from './Pages/Admin/AdminIndex';
+import PaytmIndex from './Paytm/PaytmIndex';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<WhatsAppIndex />} />
           <Route path="/payment" element={<PaymentIndex />} />
           <Route path="/admin" element={<AdminIndex />} />
+          <Route path="/paytm" element={<PaytmIndex />} />
         </Routes>
       </Router>
 
