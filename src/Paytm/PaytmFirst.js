@@ -11,7 +11,6 @@ function PaytmFirst() {
 
 
         axios.post('http://203.129.217.245:80/api/transaction-token', payload)
-        // axios.post('https://securegw-stage.paytm.in/order/process', payload, { "Content-Type": "application/json" } )
         .then((res) => {
             console.log("Pytm success", res)
             openJsCheckoutPopup(res.data.orderId, res.data.txnToken, res.data.amount,)
@@ -56,7 +55,7 @@ function PaytmFirst() {
 
     return (
         <>
-            <button className='border bg-sky-400 rounded-sm shadow-md' onClick={handleBtn}> openJsCheckoutPopup </button>
+            <button className='border bg-sky-400 rounded-sm shadow-md py-2 px-4' onClick={handleBtn}> Payment Pateway </button>
         </>
     )
 }
