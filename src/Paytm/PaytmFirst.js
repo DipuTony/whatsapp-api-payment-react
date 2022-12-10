@@ -1,21 +1,22 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 
 function PaytmFirst() {
+    const [amount, setAmount] = useState()
 
     const handleBtn = () => {
 
         const payload = {
-            "amount":"108"
+            "amount": amount
         }
 
 
-        axios.post('http://203.129.217.245:80/api/transaction-token', payload)
-        .then((res) => {
-            console.log("Pytm success", res)
-            openJsCheckoutPopup(res.data.orderId, res.data.txnToken, res.data.amount,)
-        })
-        .catch((err) => console.log("Error Paytm", err))
+        axios.post('http://192.168.0.240:82/api/transaction-token', payload)
+            .then((res) => {
+                console.log("Pytm success", res)
+                openJsCheckoutPopup(res.data.orderId, res.data.txnToken, res.data.amount,)
+            })
+            .catch((err) => console.log("Error Paytm", err))
 
     }
 
@@ -55,7 +56,13 @@ function PaytmFirst() {
 
     return (
         <>
-            <button className='border bg-sky-400 rounded-sm shadow-md py-2 px-4' onClick={handleBtn}> Payment Pateway </button>
+            <div className='m-5'>
+                <p>
+                    <input onChange={(e) => setAmount(e.target.value)} type="number" className='border border-black my-5' placeholder='Enter Amount here' />
+                </p>
+
+                <button className='border bg-sky-400 rounded-sm shadow-md py-2 px-4' onClick={handleBtn}> Payment Pateway </button>
+            </div>
         </>
     )
 }
