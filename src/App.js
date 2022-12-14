@@ -6,6 +6,7 @@ import WhatsAppIndex from './Pages/WhatsAppIndex';
 import Header from './Components/Header';
 import AdminIndex from './Pages/Admin/AdminIndex';
 import PaytmIndex from './Paytm/PaytmIndex';
+import IndexWS from './WebSocket/IndexWS';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/payment" element={<PaymentIndex />} />
           <Route path="/admin" element={<AdminIndex />} />
           <Route path="/paytm" element={<PaytmIndex />} />
+          <Route path="/chat" element={<IndexWS />} />
         </Routes>
       </Router>
 

@@ -14,11 +14,12 @@ function PaytmQR() {
             "amount": amount
         }
 
-        axios.post('http://192.168.0.240:82/api/qr-transaction', payload)
+        // axios.post('http://192.168.0.240:82/api/qr-transaction', payload)
+        axios.post('http://203.129.217.245:80/api/qr-transaction', payload)
             .then((res) => {
                 console.log("QR Generated", res)
-                setQrData(res.data.body.qrData)
-                setPaytmQrImage(res.data.body.image)
+                setQrData(res.data.data.body.qrData)
+                setPaytmQrImage(res.data.data.body.image)
 
             })
             .catch((err) => ("Error/Exeption while generating Paytm QR", err))
