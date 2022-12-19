@@ -11,6 +11,7 @@ function Header() {
                     <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/paytm"> Paytm Interation</Link>
                     <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/admin"> Admin View</Link>
                     <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/chat"> Chat</Link>
+                    <Link className='border bg-blue-400 px-4 py-1 mx-2' to="/websocket"> websocket</Link>
                 </div>
 
             </div>

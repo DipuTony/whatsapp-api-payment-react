@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import AdminIndex from './Pages/Admin/AdminIndex';
 import PaytmIndex from './Paytm/PaytmIndex';
 import IndexWS from './WebSocket/IndexWS';
+import NewWSTest from './WebSocket/NewWSTest';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/admin" element={<AdminIndex />} />
           <Route path="/paytm" element={<PaytmIndex />} />
           <Route path="/chat" element={<IndexWS />} />
+          <Route path='/websocket' element={<NewWSTest />} /> 
         </Routes>
       </Router>
 
