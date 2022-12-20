@@ -4,49 +4,52 @@ import { useEffect, useState } from 'react';
 
 
 const NewWSTest = () => {
+    const close = false
+
+    // if (close) {
 
 
-    Pusher.logToConsole = true;
+        Pusher.logToConsole = true;
 
 
-    const options = {
-        broadcaster: 'pusher',
-        key: '09217261bc9ce48570cc',
-        wsHost: "192.168.0.240",
-        wsPort: 6001,
-        forceTLS: false,
-        disableState: true,
-        cluster: "ap2",
-        encrypted: false,
-    }
+        const options = {
+            broadcaster: 'pusher',
+            key: '09217261bc9ce48570cc',
+            wsHost: "192.168.0.240",
+            wsPort: 6001,
+            forceTLS: false,
+            disableState: true,
+            cluster: "ap2",
+            encrypted: false,
+        }
 
-    // window.Echo = new Echo({
-    //     ...options,
-    //     client: new Pusher(options.key, options)
-    // });
-
-
-    // window.Echo.channel('channel')
+        // window.Echo = new Echo({
+        //     ...options,
+        //     client: new Pusher(options.key, options)
+        // });
 
 
-
-
-
-    /////////////////////////////////////////////////
-
-
-    var pusher = new Pusher('09217261bc9ce48570cc', options);
-
-
-    var channel = pusher.subscribe('channel');
-    channel.bind('hit', function (data) {
-        // alert(JSON.stringify(data));
-        console.log("===",JSON.stringify(data));
-    });
+        // window.Echo.channel('channel')
 
 
 
 
+
+        /////////////////////////////////////////////////
+
+
+        var pusher = new Pusher('09217261bc9ce48570cc', options);
+
+
+        var channel = pusher.subscribe('channel');
+        channel.bind('hit', function (data) {
+            // alert(JSON.stringify(data));
+            console.log("===", JSON.stringify(data));
+        });
+
+
+
+    // }
 
 
 

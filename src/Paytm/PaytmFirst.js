@@ -12,7 +12,7 @@ function PaytmFirst() {
 
 
         // axios.post('http://192.168.0.240:82/api/transaction-token', payload)
-        axios.post('http://http://203.129.217.245:80/api/transaction-token', payload)
+        axios.post('http://203.129.217.245:80/api/transaction-token', payload)
             .then((res) => {
                 console.log("Pytm success", res)
                 openJsCheckoutPopup(res.data.orderId, res.data.txnToken, res.data.amount,)
@@ -29,7 +29,11 @@ function PaytmFirst() {
                 "orderId": orderId,
                 "token": txnToken,
                 "tokenType": "TXN_TOKEN",
-                "amount": amount
+                "amount": amount,
+                "userDetail": {
+                    "mobileNumber": "963574875",
+                    "name": "Dipu Singh Don"
+                }
             },
             "merchant": {
                 "redirect": true
@@ -46,7 +50,10 @@ function PaytmFirst() {
             // initialze configuration using init method 
             window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
                 // after successfully updating configuration, invoke checkoutjs
+
+                console.log("Payemm donr......")
                 window.Paytm.CheckoutJS.invoke();
+
             }).catch(function onError(error) {
                 console.log("error => ", error);
             });
