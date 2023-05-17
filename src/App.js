@@ -8,6 +8,7 @@ import AdminIndex from './Pages/Admin/AdminIndex';
 import PaytmIndex from './Paytm/PaytmIndex';
 import IndexWS from './WebSocket/IndexWS';
 import NewWSTest from './WebSocket/NewWSTest';
+import Test from './Pages/Test';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/paytm" element={<PaytmIndex />} />
           <Route path="/chat" element={<IndexWS />} />
           <Route path='/websocket' element={<NewWSTest />} /> 
+          <Route path='/test' element={<Test />} /> 
         </Routes>
       </Router>
 
